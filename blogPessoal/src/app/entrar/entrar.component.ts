@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsuarioLogin } from '../model/UsuarioLogin';
+import { AuthService } from '../service/auth.service';
+
 
 @Component({
   selector: 'app-entrar',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntrarComponent implements OnInit {
 
-  constructor() { }
+ usuarioLogin: UsuarioLogin = new UsuarioLogin
+ 
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    window.scroll(0, 0)
   }
 
+  entrar(){
+    this.auth.entrar(this.usuarioLogin).subscribe((resp: UsuarioLogin)=>{
+      this.usuarioLogin = resp
+      this.router.navigate(['/inicio'])
+    
+  })
+
+}
 }
