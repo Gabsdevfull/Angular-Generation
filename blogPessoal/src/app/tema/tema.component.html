@@ -40,7 +40,7 @@
         </div>
         <div class="row mt-3 mb5">
             <div class="col-md-6">
-                <table class="table table-hover">
+                <table class="table table-hover mr-4">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -53,8 +53,8 @@
                         <th>{{item.id}}</th>
                         <td>{{item.descricao}}</td>
                         <td class="d-flex justify-content-end">
-                          <button class="btn btn-info">Editar</button>
-                          <button class="bnt btn-danger">Apagar</button>
+                          <button class="btn btn-info mr-4" [routerLink]="['/tema-edit', item.id]" >Editar</button>
+                          <button class="bnt btn-danger mr-4" [routerLink]="['/tema-delete', item.id]" >Apagar</button>
                         </td>
                       </tr>
                      </tbody>
